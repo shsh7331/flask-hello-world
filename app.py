@@ -54,7 +54,16 @@ def selecting():
     ''')
     records = cur.fetchall()
     conn.close()
-    return 'Basketball Table Populated - shsh7331'
+     response_string=""
+    response_string+="<table>"
+    for player in records:
+        response_string+="<tr>"
+        for info in player:
+            response_string+="<td>{}</td}".format(info)
+        resonse_string+="</tr>"
+    response_string+="</tables>"
+    return response_string
+
 
 @app.route('/db_drop')
 def dropping():
@@ -65,4 +74,4 @@ def dropping():
     ''')
     conn.commit()
     conn.close()
-    return 'Basketball Table Populated - shsh7331'
+    return 'Basketball Table Dropped - shsh7331'
